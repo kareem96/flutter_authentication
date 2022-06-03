@@ -52,4 +52,27 @@ extension StringExtension on String{
       log.e("$e");
     }
   }
+
+
+  void toToastLoading() {
+    try {
+      final message = isEmpty ? "loading" : this;
+      //dismiss before show toast
+      dismissAllToast(showAnim: true);
+
+      showToastWidget(
+        Toast(
+          bgColor: Colors.black,
+          icon: Icons.info,
+          message: message,
+          textColor: Colors.white,
+        ),
+        dismissOtherToast: true,
+        position: ToastPosition.top,
+        duration: const Duration(seconds: 3),
+      );
+    } catch (e) {
+      log.e("$e");
+    }
+  }
 }
