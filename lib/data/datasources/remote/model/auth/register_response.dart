@@ -2,6 +2,8 @@
 
 import 'package:equatable/equatable.dart';
 
+import '../../../../../domain/domain.dart';
+
 class RegisterResponse extends Equatable{
   final int? id;
   final String? token;
@@ -27,7 +29,7 @@ class RegisterResponse extends Equatable{
     return map;
   }
 
-  /*Register toEntity() => Register(token);*/
+  Register toEntity() => Register(token);
 
   @override
   List<Object?> get props => [
