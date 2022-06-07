@@ -5,4 +5,5 @@ import 'package:flutter_auth/domain/domain.dart';
 abstract class AuthRepository{
   Future<Either<Failure, Register>> register(RegisterParams registerParams);
   Future<Either<Failure, Login>> login(LoginParams loginParams);
+  Future<Either<Failure, Users>> users(UsersParams usersParams);
 }

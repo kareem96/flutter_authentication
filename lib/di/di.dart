@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_auth/data/data.dart';
 import 'package:flutter_auth/domain/domain.dart';
+import 'package:flutter_auth/presentation/pages/auth/cubit/cubit.dart';
+import 'package:flutter_auth/presentation/pages/main/cubit/nav_drawer_cubit.dart';
+import 'package:flutter_auth/presentation/pages/main/dashboard/cubit/users_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,12 +21,27 @@ Future<void> serviceLocator({bool isUnitTest = false}) async {
     dataSource();
     repositories();
     useCase();
+    cubit();
+  }else{
+    sl.registerSingleton<DioClient>(DioClient());
+    dataSource();
+    repositories();
+    useCase();
+    cubit();
   }
+}
+
+void cubit() {
+  sl.registerFactory(() => RegisterCubit(sl()));
+  sl.registerFactory(() => LoginCubit(sl()));
+  sl.registerFactory(() => NavDrawerCubit());
+  sl.registerFactory(() => UsersCubit(sl()));
 }
 
 void useCase() {
   sl.registerLazySingleton(() => PostLogin(sl()));
   sl.registerLazySingleton(() => PostRegister(sl()));
+  sl.registerLazySingleton(() => GetUsers(sl()));
 }
 
 void repositories() {

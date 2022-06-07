@@ -12,7 +12,7 @@ class DataHelper {
     this.title,
     this.desc,
     this.iconPath,
-    this.isSelected =false,
+    this.isSelected = false,
     this.icon,
     this.url,
     this.type,

@@ -28,4 +28,17 @@ class AuthRepositoryImpl implements AuthRepository{
     }
   }
 
+  @override
+  Future<Either<Failure, Users>> users(UsersParams usersParams)async {
+    try{
+      final _response = await authRemoteDatasource.users(usersParams);
+      if(_response.data?.isEmpty ?? true){
+        return Left(NoDataFailure());
+      }
+      return Right(_response.toEntity());
+    }on ServerException catch(e){
+      return Left(ServerFailure(e.message));
+    }
+  }
+
 }

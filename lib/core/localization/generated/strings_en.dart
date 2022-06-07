@@ -1,9 +1,11 @@
 
 
+
 import 'strings.dart';
 
-class StringsEn extends Strings{
-  StringsEn([String locale = "en"]) : super(locale);
+/// The translations for English (`en`).
+class StringsEn extends Strings {
+  StringsEn([String locale = 'en']) : super(locale);
 
   @override
   String get dashboard => 'Dashboard';

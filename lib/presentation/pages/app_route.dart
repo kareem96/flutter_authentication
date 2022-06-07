@@ -2,6 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_auth/di/di.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'auth/cubit/cubit.dart';
+import 'auth/login_page.dart';
+import 'auth/register_page.dart';
+import 'main/cubit/nav_drawer_cubit.dart';
+import 'main/main_page.dart';
 import 'splashscreen/splash_screen_page.dart';
 
 class AppRoute {
@@ -15,13 +20,20 @@ class AppRoute {
   static const String register = "auth/register";
 
   static Map<String, WidgetBuilder> getRoutes({RouteSettings? settings}) => {
-    splashScreen: (_) => SplashScreenPage(),
-    mainScreen: (_) {
-      return BlocProvider(
-          create: (_) => sl<NavDrawerCubit>(),
-        child: const MainPage(),
-      )
-    }
-
-  }
+        splashScreen: (_) => const SplashScreenPage(),
+        mainScreen: (_) {
+          return BlocProvider(
+            create: (_) => sl<NavDrawerCubit>(),
+            child: const MainPage(),
+          );
+        },
+        login: (_) => BlocProvider(
+              create: (_) => sl<LoginCubit>(),
+              child: const LoginPage(),
+            ),
+        register: (_) => BlocProvider(
+              create: (_) => sl<RegisterCubit>(),
+              child: const RegisterPage(),
+            )
+      };
 }

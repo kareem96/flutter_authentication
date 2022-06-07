@@ -25,7 +25,7 @@ class UserResponse extends Equatable {
     final page = json["page"] as int?;
     final perPage = json["per_page"] as int?;
     final total = json["total"] as int?;
-    final totalPages = json["total_page"] as int?;
+    final totalPages = json["total_pages"] as int?;
     final error = json["error"] as String?;
     final dataTemp = json["data"] as List<dynamic>?;
     final data = dataTemp != null

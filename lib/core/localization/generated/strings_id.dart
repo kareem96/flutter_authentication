@@ -1,7 +1,11 @@
+
+
+
 import 'strings.dart';
 
-class StringsId extends Strings{
-  StringsId([String locale = "id"]) : super(locale);
+/// The translations for Indonesian (`id`).
+class StringsId extends Strings {
+  StringsId([String locale = 'id']) : super(locale);
 
   @override
   String get dashboard => 'Beranda';
