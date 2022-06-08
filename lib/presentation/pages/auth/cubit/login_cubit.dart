@@ -17,7 +17,7 @@ class LoginCubit extends Cubit<LoginState> {
     final _data = await _postLogin.call(params);
 
     _data.fold(
-          (l) {
+      (l) {
         if (l is ServerFailure) {
           emit(
             state.copyWith(
@@ -27,7 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
           );
         }
       },
-          (r) {
+      (r) {
         /// Set isLogin true
         sl<PrefManager>().isLogin = true;
         sl<PrefManager>().token = r.token;

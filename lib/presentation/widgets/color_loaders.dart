@@ -36,6 +36,7 @@ class _ColorLoaderState extends State<ColorLoader>
       end: 1.0,
     ).animate(
         CurvedAnimation(parent: controller, curve: const Interval(0.0, 1.0)));
+
     animationRadiusIn = Tween(
       begin: 0.0,
       end: 1.0,
@@ -88,49 +89,54 @@ class _ColorLoaderState extends State<ColorLoader>
                   Transform.translate(
                     offset: Offset.zero,
                     child: Dot(radius: radius, color: Colors.black26),
-                  ),Transform.translate(
-                    offset: Offset(
-                      radius! * cos(0.0),
-                      radius! * sin(0.0)
-                    ),
+                  ),
+                  Transform.translate(
+                    offset: Offset(radius! * cos(0.0), radius! * sin(0.0)),
                     child: Dot(radius: dotRadius, color: Palette.primary),
-                  ),Transform.translate(
+                  ),
+                  Transform.translate(
                     offset: Offset(
                       radius! * cos(0.0 + 1 * pi / 4),
                       radius! * sin(0.0 + 1 * pi / 4),
                     ),
                     child: Dot(radius: dotRadius, color: Palette.primaryLight),
-                  ),Transform.translate(
+                  ),
+                  Transform.translate(
                     offset: Offset(
                       radius! * cos(0.0 + 2 * pi / 4),
                       radius! * sin(0.0 + 2 * pi / 4),
                     ),
                     child: Dot(radius: dotRadius, color: Palette.red),
-                  ),Transform.translate(
+                  ),
+                  Transform.translate(
                     offset: Offset(
                       radius! * cos(0.0 + 3 * pi / 4),
                       radius! * sin(0.0 + 3 * pi / 4),
                     ),
                     child: Dot(radius: dotRadius, color: Palette.yellow),
-                  ),Transform.translate(
+                  ),
+                  Transform.translate(
                     offset: Offset(
                       radius! * cos(0.0 + 4 * pi / 4),
                       radius! * sin(0.0 + 4 * pi / 4),
                     ),
                     child: Dot(radius: dotRadius, color: Palette.green),
-                  ),Transform.translate(
+                  ),
+                  Transform.translate(
                     offset: Offset(
                       radius! * cos(0.0 + 5 * pi / 4),
                       radius! * sin(0.0 + 5 * pi / 4),
                     ),
                     child: Dot(radius: dotRadius, color: Palette.green),
-                  ),Transform.translate(
+                  ),
+                  Transform.translate(
                     offset: Offset(
                       radius! * cos(0.0 + 6 * pi / 4),
                       radius! * sin(0.0 + 6 * pi / 4),
                     ),
                     child: Dot(radius: dotRadius, color: Palette.primaryLight),
-                  ),Transform.translate(
+                  ),
+                  Transform.translate(
                     offset: Offset(
                       radius! * cos(0.0 + 7 * pi / 4),
                       radius! * sin(0.0 + 7 * pi / 4),
