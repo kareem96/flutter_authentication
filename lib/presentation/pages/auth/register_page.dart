@@ -75,7 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         Icons.alternate_email,
                         color: Theme.of(context).textTheme.bodyText1?.color,
                       ),
-                      hintText: "sample@gmail.com",
+                      hintText: "eve.holt@reqres.in",
                       hint: Strings.of(context)!.email,
                       validator: (String? value) => value != null
                           ? (!value.isValidEmail()
