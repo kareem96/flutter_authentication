@@ -49,14 +49,14 @@ class _MenuDrawerState extends State<MenuDrawer> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "LazyCat Labs",
+                          "Abdul Karim",
                           style: Theme.of(context)
                               .textTheme
                               .headline6
                               ?.copyWith(color: Palette.white),
                         ),
                         Text(
-                          "lazycatlabs@gmail.com",
+                          "ak339444@gmail.com",
                           style: Theme.of(context)
                               .textTheme
                               .caption

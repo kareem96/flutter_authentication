@@ -6,9 +6,6 @@ import 'package:flutter_auth/presentation/pages/app_route.dart';
 import 'package:flutter_auth/presentation/pages/auth/cubit/cubit.dart';
 import 'package:flutter_auth/presentation/resources/dimens.dart';
 import 'package:flutter_auth/presentation/resources/images.dart';
-import 'package:flutter_auth/presentation/widgets/parent.dart';
-import 'package:flutter_auth/presentation/widgets/spacer_vertical.dart';
-import 'package:flutter_auth/presentation/widgets/text_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

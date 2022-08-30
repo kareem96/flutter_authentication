@@ -2,6 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_auth/core/core.dart';
 import 'package:flutter_auth/data/datasources/datasources.dart';
 import 'package:flutter_auth/domain/domain.dart';
+import 'package:flutter_auth/domain/entities/auth/create.dart';
+import 'package:flutter_auth/domain/usecase/auth/post_create.dart';
 
 class AuthRepositoryImpl implements AuthRepository{
   final AuthRemoteDatasource authRemoteDatasource;
@@ -37,6 +39,16 @@ class AuthRepositoryImpl implements AuthRepository{
       }
       return Right(_response.toEntity());
     }on ServerException catch(e){
+      return Left(ServerFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Create>> create(CreateParams createParams) async{
+    try{
+      final _response = await authRemoteDatasource.createUsers(createParams);
+      return Right(_response.toEntity());
+    }on ServerException catch (e){
       return Left(ServerFailure(e.message));
     }
   }

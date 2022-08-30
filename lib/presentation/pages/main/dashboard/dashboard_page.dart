@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/domain/domain.dart';
 import 'package:flutter_auth/presentation/pages/main/dashboard/cubit/users_cubit.dart';
 import 'package:flutter_auth/presentation/presentation.dart';
+import 'package:flutter_auth/utils/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'detail_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -68,56 +71,64 @@ class _DashboardPageState extends State<DashboardPage> {
                   itemBuilder: (_, index) {
                     return index < _users.length
                         ? Container(
-                      decoration: BoxDecorations.card.copyWith(
-                        color: Theme.of(context).cardColor,
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: Dimens.space16,
-                        horizontal: Dimens.space24,
-                      ),
-                      margin: EdgeInsets.symmetric(
-                        vertical: Dimens.space8,
-                        horizontal: Dimens.space16,
-                      ),
-                      child: Row(
-                        children: [
-                          CircleImage(
-                            url: _users[index].avatar ?? "",
-                            size: Dimens.profilePicture,
-                          ),
-                          const SpacerHorizontal(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                _users[index].name ?? "",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1
-                                    ?.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                ),
+                            decoration: BoxDecorations.card.copyWith(
+                              color: Theme.of(context).cardColor,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              vertical: Dimens.space16,
+                              horizontal: Dimens.space24,
+                            ),
+                            margin: EdgeInsets.symmetric(
+                              vertical: Dimens.space8,
+                              horizontal: Dimens.space16,
+                            ),
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (_) => DetailPage(users: _users[index],))
+                                );
+                                debugPrint('Clicked....${_users[index].avatar}');
+                              },
+                              child: Row(
+                                children: [
+                                  CircleImage(
+                                    url: _users[index].avatar ?? "",
+                                    size: Dimens.profilePicture,
+                                  ),
+                                  const SpacerHorizontal(),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        _users[index].name ?? "",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1
+                                            ?.copyWith(
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Text(
+                                        _users[index].email ?? "",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2
+                                            ?.copyWith(
+                                          color: Theme.of(context).hintColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              Text(
-                                _users[index].email ?? "",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2
-                                    ?.copyWith(
-                                  color: Theme.of(context).hintColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    )
+                            )
+                          )
                         : Padding(
-                      padding: EdgeInsets.all(Dimens.space16),
-                      child: const Center(
-                        child: CupertinoActivityIndicator(),
-                      ),
-                    );
+                            padding: EdgeInsets.all(Dimens.space16),
+                            child: const Center(
+                              child: CupertinoActivityIndicator(),
+                            ),
+                          );
                   },
                 );
               case UserStatus.failure:
@@ -128,6 +139,13 @@ class _DashboardPageState extends State<DashboardPage> {
             }
           },
         ),
+      ),
+      floatingButton: FloatingActionButton(
+        onPressed: (){
+          context.goTo(AppRoute.create);
+        },
+        backgroundColor: Theme.of(context).primaryColor,
+        child: Icon(Icons.add, color: Theme.of(context).primaryColorLight,),
       ),
     );
   }
